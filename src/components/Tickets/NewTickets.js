@@ -73,7 +73,7 @@ class NewTickets extends Component {
                         onChange={this.onChangeContent} required/>
             </div>
             <div style={{marginLeft:'40%'}}>
-            <input type="submit" className="btn btn-primary" value="Envoyer" />
+            <input type="submit" className="btn btn-primary" value="Créer" />
             <button style={{marginLeft:10}} onClick={this.onCancel} className="btn btn-danger">Annuler</button>
             </div>
           </form>
