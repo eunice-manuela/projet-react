@@ -30,18 +30,23 @@ class NewTickets extends Component {
         })
       }
 
-      onSendTicket=()=>{
+      onSendTicket=(event)=>{
+        event.preventDefault();
           let newTickets={
-              cas : this.state.Titre,
+              title : this.state.Titre,
               service:this.state.Service,
-              content: this.state.Content,
-          }
-          alert('cas '+ newTickets.cas + ' service '+ newTickets.service+' content '+newTickets.content)
-          axios.post('', { newTickets })
-            .then(res => {
-              console.log(res);
-              console.log(res.data);
-            })
+              details: this.state.Content,
+          };
+          console.log('jghjfhfhg')
+          axios.post('http://192.168.8.102:8000', newTickets)
+          .then(res => {
+            console.log('res ujikueisu',res);
+            console.log(res.data);
+          })
+          .catch(err => console.log(err));
+
+          //alert('cas '+ newTickets.cas + ' service '+ newTickets.service+' content '+newTickets.content)
+         
       }
 
       
@@ -59,7 +64,7 @@ class NewTickets extends Component {
           </div>
 
 
-          <form onSubmit={this.onSendTicket} className="needs-validation" novalidate>
+          <form onSubmit={this.onSendTicket} className="needs-validation">
             <div className="form-row">
               <div className='col-md-6'>
                 <label for='titre'>Entrer le Thème du ticket</label>
