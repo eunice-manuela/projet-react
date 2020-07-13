@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles.css'
+import axios from 'axios';
 
 class NewTickets extends Component {
 
@@ -36,7 +37,17 @@ class NewTickets extends Component {
               content: this.state.Content,
           }
           alert('cas '+ newTickets.cas + ' service '+ newTickets.service+' content '+newTickets.content)
+          axios.post('', { newTickets })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            })
       }
+
+      
+
+
+
       render() {
         return (
         <div className='main'>

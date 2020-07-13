@@ -59,25 +59,25 @@ class NoResolvedTickets extends Component {
     contentModal=()=>{
         return(
             <div>
-                <div style={{backgroundColor:"black",height:30}}>
+                <div style={{backgroundColor:"black",height:30 ,margin:20}}>
                     
-                    <h4 style={{textAlign:"center",marginTop:0 ,color:'white'}}>
-                     {this.state.title}</h4>
+                    <h5 style={{textAlign:"center",paddingTop:8 ,color:'white'}}>
+                     {this.state.title}</h5>
                 </div>
                 <div style={{ width: '100%' }}>
 
                 <Box display="flex" flexDirection="row" p={1} m={1}
                  bgcolor="background.paper" justifyContent='space-between'>
                     <Box p={1} bgcolor="grey.300">
-                        <Box style={{textAlign:'center',color:'black',fontWeight:'bold',fontSize:18}}>service </Box>
+                        <Box style={{textAlign:'center',color:'black',fontWeight:'bold',fontSize:16}}>service </Box>
                         <Box style={{textAlign:"center"}}>{this.state.service}</Box>
                     </Box>
                     <Box p={1} bgcolor="grey.300">
-                        <Box style={{textAlign:'center',color:'black',fontWeight:'bold' ,fontSize:18}}>auteur </Box>
+                        <Box style={{textAlign:'center',color:'black',fontWeight:'bold' ,fontSize:16}}>auteur </Box>
                         <Box style={{textAlign:"center"}}>{this.state.auteur}</Box>
                     </Box>
                     <Box  p={1} bgcolor="grey.300">
-                        <Box style={{textAlign:'center',color:'black' ,fontWeight:'bold',fontSize:18}}>date de création</Box>
+                        <Box style={{textAlign:'center',color:'black' ,fontWeight:'bold',fontSize:16}}>date de création</Box>
                         <Box style={{textAlign:"center"}}> {this.state.date}</Box>
                     </Box>
                     
@@ -93,7 +93,7 @@ class NoResolvedTickets extends Component {
                     <form style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:150}} required/>
+                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
                         </div>
                         <div style={{marginLeft:'30%'}}>
                             <input type="submit" className="btn btn-primary" value="Envoyer" />

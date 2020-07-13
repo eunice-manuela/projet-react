@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../../styles.css'
+import '../../styles.css';
+import axios from 'axios';
 
 class NewServices extends Component {
     constructor(props) {
@@ -28,6 +29,11 @@ class NewServices extends Component {
               Description: this.state.Description,
           }
           alert('Nom '+ newServices.Nom +' Description '+newServices.Description)
+          axios.post('', { newServices })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            })
       }
       render() {
         return (
