@@ -18,6 +18,7 @@ class AllTickets extends Component {
             date:'',
             etat:'',
             contenu:'',
+            commentaire:'',
         }
     }
 
@@ -112,10 +113,12 @@ class AllTickets extends Component {
                 </div>
                 <div>
                     <form style={{margin:20}}>
-                        <div className='form-group col-md-13 mb-3'>
-                            <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
-                        </div>
+                    <div>
+                    <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
+                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Commentaire</Box>
+                        <Box style={{marginTop:8}} >{this.state.commentaire}</Box>
+                    </Box>
+                </div>
                         <div style={{marginLeft:'30%'}}>
                             <input type="submit" className="btn btn-primary" value="Envoyer" />
                             <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
@@ -145,7 +148,8 @@ class AllTickets extends Component {
                         auteur:ticket.client,
                         date:ticket.date_creation,
                         etat:ticket.etat,
-                        contenu:ticket.contenu
+                        contenu:ticket.contenu,
+                        commentaire: ticket.commentaire,
                         })}>
                     <th scope="row">{ticket.id}</th>
                     <td>{ticket.cas}</td>
