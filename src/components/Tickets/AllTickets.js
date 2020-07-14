@@ -25,7 +25,7 @@ class AllTickets extends Component {
     //on recupère les données back end
 
     componentDidMount() {
-        axios.get('./data')
+        axios.get('http://localhost:8080/tickets')
           .then(res => {
             const tickets = res.data;
             this.setState({tickets: tickets  });
@@ -106,7 +106,7 @@ class AllTickets extends Component {
                 </div>
                 <div>
                     <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
-                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Message</Box>
+                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Description</Box>
                         <Box style={{marginTop:8}} >{this.state.contenu}</Box>
                     </Box>
                 </div>
@@ -131,26 +131,28 @@ class AllTickets extends Component {
 
         const MyTickets = this.state.tickets
        
-
+        
           const content = MyTickets.map((ticket) =>
+
+        
             
                 <tr onClick={
                     ()=>this.setState({
                         modalVisible:true,
                         id:ticket.id,
-                        title:ticket.title,
-                        service:ticket.Service,
-                        auteur:ticket.Auteur,
-                        date:ticket.Date,
-                        etat:ticket.Etat,
-                        contenu:ticket.Content
+                        title:ticket.cas,
+                        service:ticket.service,
+                        auteur:ticket.client,
+                        date:ticket.date_creation,
+                        etat:ticket.etat,
+                        contenu:ticket.contenu
                         })}>
                     <th scope="row">{ticket.id}</th>
-                    <td>{ticket.title}</td>
-                    <td>{ticket.Service}</td>
-                    <td>{ticket.Auteur}</td>
-                    <td>{ticket.Date}</td>
-                    <td>{ticket.Etat}</td>
+                    <td>{ticket.cas}</td>
+                    <td>{ticket.service}</td>
+                    <td>{ticket.client}</td>
+                    <td>{ticket.date_creation}</td>
+                    <td>{ticket.etat}</td>
                 </tr>
            
           );
@@ -232,6 +234,23 @@ class AllTickets extends Component {
                     <h3>Mes tickets</h3>
                     <p>Ici vous pouvez voir tous les tickets que vous avez créé</p>
                 </div>
+
+                <Box display="flex" flexDirection="row" p={1} m={1}
+                 bgcolor="background.paper" justifyContent='flex-start'>
+                    <Box p={1} bgcolor="grey.300">
+                        <div >
+                            <input type='text' placeholder="Rechercher" className ="form-control" name='Search'
+                            onChange={this.onChangeTitre} required />
+                        </div>
+                    </Box>
+                    <Box p={1} bgcolor="grey.300">
+                        <input type="submit" className="btn btn-primary" value="Search" />
+                    </Box>
+                    
+                </Box>
+
+
+
                 {showTable()}
                 {this.ShowModal()}
             </div>

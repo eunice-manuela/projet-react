@@ -16,7 +16,7 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" style={{fontSize:22,
-                            color:'black',fontWeight:'bold'}} href="#">OS TICKETS</a>
+                            color:'black',fontWeight:'bold'}} href="#">TECH SUPPORT</a>
                     </div>
                     <div className="collapse navbar-collapse" 
                         id="bs-example-navbar-collapse-1">
@@ -26,15 +26,6 @@ class Navbar extends Component {
                             </li>
                             <li className="li_nav" activeClassName="main-nav">
                                 <NavLink to="/Tickets">Tickets</NavLink>
-                            </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/Staff">Administrateurs</NavLink>
-                            </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/Services">Services</NavLink>
-                            </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/notifications">Notifications</NavLink>
                             </li>
                         </ul>
                     </div>
