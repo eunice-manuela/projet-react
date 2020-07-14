@@ -16,7 +16,7 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" style={{fontSize:22,
-                            color:'black',fontWeight:'bold'}} href="#">OS TICKETS</a>
+                            color:'black',fontWeight:'bold'}} href="#">TECH SUPPORT</a>
                     </div>
                     <div className="collapse navbar-collapse" 
                         id="bs-example-navbar-collapse-1">

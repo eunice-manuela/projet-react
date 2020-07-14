@@ -1,14 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Route, /*Switch,Link*/} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import Tickets from './components/Tickets/Tickets';
-import Accueil from './components/Accueil';
+import {Accueil} from './components/Accueil';
 import Notifications from './components/Notifications/Notifications'
 import Staff from './components/Staff/Staff'
 import Services from './components/Services/Services'
 import Navbar from './components/Navbar'
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import IsUserRoute from './components/IsUserRoute';
 
 
 

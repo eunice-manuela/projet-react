@@ -38,9 +38,9 @@ class NewTickets extends Component {
               details: this.state.Content,
           };
           console.log('jghjfhfhg')
-          axios.post('http://192.168.8.102:8000', newTickets)
+          axios.post('http://192.168.8.102:8080', newTickets)
           .then(res => {
-            console.log('res ujikueisu',res);
+            console.log(res);
             console.log(res.data);
           })
           .catch(err => console.log(err));

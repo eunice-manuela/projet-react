@@ -88,7 +88,7 @@ class AllTickets extends Component {
                 <div style={{ width: '100%' }}>
 
                 <Box display="flex" flexDirection="row" p={1} m={1}
-                 bgcolor="background.paper" justifyContent='space-between'>
+                    bgcolor="background.paper" justifyContent='space-between'>
                     <Box p={1} bgcolor="grey.300">
                         <Box style={{textAlign:'center',color:'black',fontWeight:'bold',fontSize:16}}>service </Box>
                         <Box style={{textAlign:"center"}}>{this.state.service}</Box>
@@ -111,17 +111,10 @@ class AllTickets extends Component {
                     </Box>
                 </div>
                 <div>
-                    <form style={{margin:20}}>
-                        <div className='form-group col-md-13 mb-3'>
-                            <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
-                        </div>
-                        <div style={{marginLeft:'30%'}}>
-                            <input type="submit" className="btn btn-primary" value="Envoyer" />
-                            <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
-                                className="btn btn-warning">Fermer la fenêtre</button>
-                        </div>
-                    </form>
+                    <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
+                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Message</Box>
+                        <Box style={{marginTop:8}} >{this.state.contenu}</Box>
+                    </Box>
                 </div>
             </div>
         )
@@ -232,6 +225,23 @@ class AllTickets extends Component {
                     <h3>Mes tickets</h3>
                     <p>Ici vous pouvez voir tous les tickets que vous avez créé</p>
                 </div>
+
+
+                <Box display="flex" flexDirection="row"
+                    bgcolor="background.paper" justifyContent='flex-start'>
+                    <Box p={1} bgcolor="grey.300">
+                    <div>
+                        <input type='text' placeholder= "Rechercher" className ="form-control" name='Search'/>          
+                    </div>
+                    </Box>
+                    <Box p={1} bgcolor="grey.300">
+                    <input type="submit" className="btn btn-primary" value="Search" />
+                    </Box>
+                    
+                </Box>
+
+
+                
                 {showTable()}
                 {this.ShowModal()}
             </div>
