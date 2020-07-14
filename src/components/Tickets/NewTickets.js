@@ -33,19 +33,22 @@ class NewTickets extends Component {
       onSendTicket=(event)=>{
         event.preventDefault();
           let newTickets={
-              title : this.state.Titre,
-              service:this.state.Service,
-              details: this.state.Content,
+              cas : this.state.Titre,
+              contenu: this.state.Content,
+              etat: 'Créé',
+              client: 1,
+              service: 1,
           };
-          console.log('jghjfhfhg')
-          axios.post('http://192.168.8.102:8080', newTickets)
+          axios.post('http://localhost:8080/tickets', newTickets)
           .then(res => {
             console.log(res);
             console.log(res.data);
+            alert( "TICKET " +newTickets.cas +" crée avec succèss" )
+            
           })
           .catch(err => console.log(err));
 
-          //alert('cas '+ newTickets.cas + ' service '+ newTickets.service+' content '+newTickets.content)
+          //
          
       }
 
@@ -67,7 +70,7 @@ class NewTickets extends Component {
           <form onSubmit={this.onSendTicket} className="needs-validation">
             <div className="form-row">
               <div className='col-md-6'>
-                <label for='titre'>Entrer le Thème du ticket</label>
+                <label for='titre'></label>
                 <input type='text' className ="form-control" name='Titre'
                   onChange={this.onChangeTitre} required />
               </div>
@@ -84,7 +87,7 @@ class NewTickets extends Component {
               </div>
             </div>
             <div className='form-group col-md-12 mb-3' style={{marginTop:20}}>
-              <label for='content'>Contenu</label>
+              <label for='content'>Description</label>
               <textarea value={this.state.value} className ="form-control" style={{height:180}}
                         onChange={this.onChangeContent} required/>
             </div>

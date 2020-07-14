@@ -27,15 +27,6 @@ class Navbar extends Component {
                             <li className="li_nav" activeClassName="main-nav">
                                 <NavLink to="/Tickets">Tickets</NavLink>
                             </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/Staff">Administrateurs</NavLink>
-                            </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/Services">Services</NavLink>
-                            </li>
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink to="/notifications">Notifications</NavLink>
-                            </li>
                         </ul>
                     </div>
                 </div>
