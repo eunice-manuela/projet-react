@@ -40,7 +40,7 @@ class NewTickets extends Component {
               service:this.state.Service,
               utilisateur:utilisateur,
           };
-          axios.post('http://localhost:8000/ticket/create', newTickets)
+          axios.post('http://localhost:8000/ticket/create/', newTickets)
           .then(res => {
             console.log(res);
             console.log(res.data);
