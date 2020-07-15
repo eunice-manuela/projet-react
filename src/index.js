@@ -30,6 +30,7 @@ render(
         <ProtectedRoute path="/notifications" component={Notifications}/>
         <ProtectedRoute path="/staff" component={Staff}/>
     </Router>
+    
   </div>,
   document.getElementById('root')
 );

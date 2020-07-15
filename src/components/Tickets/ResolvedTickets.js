@@ -156,18 +156,18 @@ class ResolvedTickets extends Component {
                   modalVisible:true,
                   id:ticket.id,
                   title:ticket.title,
-                  service:ticket.Service,
-                  auteur:ticket.Auteur,
-                  date:ticket.Date,
-                  etat:ticket.Etat,
-                  contenu:ticket.Content
+                  service:ticket.service,
+                  auteur:ticket.auteur,
+                  date:ticket.date,
+                  etat:ticket.etat,
+                  contenu:ticket.details
                   })}>
               <th scope="row">{ticket.id}</th>
               <td>{ticket.title}</td>
-              <td>{ticket.Service}</td>
-              <td>{ticket.Auteur}</td>
-              <td>{ticket.Date}</td>
-              <td>{ticket.Etat}</td>
+              <td>{ticket.service}</td>
+              <td>{ticket.auteur}</td>
+              <td>{ticket.date}</td>
+              <td>{ticket.etat}</td>
           </tr>
           );
 
