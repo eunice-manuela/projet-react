@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
 import '../../styles.css'
 import axios from 'axios';
+import { utilisateur ,password} from '../Accueil';
 
 class ResolvedTickets extends Component {
 
@@ -22,11 +23,15 @@ class ResolvedTickets extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/ticket?etat=Resolu')
+		let data={
+              'user':utilisateur,
+              'password':password
+          };
+        axios.post('http://localhost:8000/ticket/solved/',data)
           .then(res => {
             const tickets = res.data;
             this.setState({tickets: tickets  });
-            console.log('tickets', tickets)
+            console.log(tickets)
           })
           .catch(function (error) {
             console.log(error);
@@ -140,13 +145,12 @@ class ResolvedTickets extends Component {
 
         function TicketResolu(){
             const ticketResolu=[]
-            MyTickets.map((ticket)=>
-                    ticketResolu.push(ticket)
-            )
+            MyTickets.map((ticket)=>ticketResolu.push(ticket))
+			console.log(MyTickets)
             return ticketResolu
         }
           
-          const content = TicketResolu().map((ticket) =>
+         const content = TicketResolu().map((ticket) =>
           <tr onClick={
               ()=>this.setState({
                   modalVisible:true,
