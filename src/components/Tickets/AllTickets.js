@@ -43,7 +43,7 @@ class AllTickets extends Component {
       }
       isResolu(id_ticket){
         this.setState({modalVisible:false})
-        axios.post('http://localhost:8000/ticket/liste/',id_ticket)
+        axios.post('http://localhost:8000/ticket/validate/',id_ticket)
         .then(res => {
           console.log(res.data)
         })
