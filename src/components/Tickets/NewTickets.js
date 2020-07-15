@@ -38,7 +38,7 @@ class NewTickets extends Component {
               content: this.state.Content,
               state: 'Cree',
               service:this.state.Service,
-              utilisateur:utilisateur,
+              user:utilisateur,
           };
           axios.post('http://localhost:8000/ticket/create/', newTickets)
           .then(res => {

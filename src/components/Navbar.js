@@ -12,7 +12,8 @@ class Navbar extends Component {
             isLogin:false,
         }
     }
-     refreshPage=()=> {
+     refreshNavBar=()=> {
+         this.IsLogin
         window.location.reload(false);
       }
     IsLogin=()=>{
