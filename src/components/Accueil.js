@@ -10,7 +10,7 @@ export var isLogin=true
 export var isLoginAdmin=true
 export var isLoginClient=false
 export var utilisateur='asa'
-export var password=''
+export var password='10022000a'
 
 export class Accueil extends Component {
 
