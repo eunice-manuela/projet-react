@@ -66,7 +66,7 @@ class AllTickets extends Component {
         .catch(function (error) {
           console.log(error);
         });
-       
+        this.setState({modalVisible:false})
         console.log('reponse ',data)
       }
 
@@ -123,7 +123,7 @@ class AllTickets extends Component {
                         </div>
                         <div style={{marginLeft:'30%'}}>
                             <input type="submit" className="btn btn-primary" value="Envoyer" />
-                            <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
+                            <button  style={{marginLeft:10}} 
                                 className="btn btn-warning">Fermer la fenêtre</button>
                         </div>
                     </form>
