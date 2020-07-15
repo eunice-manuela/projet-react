@@ -10,6 +10,7 @@ export var isLogin=true
 export var isLoginAdmin=true
 export var isLoginClient=false
 export var utilisateur='asa'
+export var password=''
 
 export class Accueil extends Component {
 
@@ -76,6 +77,7 @@ export class Accueil extends Component {
           console.log(res.data);
           if(res.data['state']==='success'){
                     utilisateur=this.state.username
+                    password=this.state.password
                     isLogin=true
                 if(this.state.username!='admin'){
                     isLoginClient=true

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles.css'
 import axios from 'axios';
-import { utilisateur } from '../Accueil';
+import { utilisateur ,password} from '../Accueil';
 
 class NewTickets extends Component {
 
@@ -34,11 +34,12 @@ class NewTickets extends Component {
       onSendTicket=(event)=>{
         event.preventDefault();
           let newTickets={
-              cas : this.state.Titre,
-              content: this.state.Content,
-              state: 'Cree',
-              service:this.state.Service,
-              user:utilisateur,
+              'cas' : this.state.Titre,
+              'content': this.state.Content,
+              'state': 'Cree',
+              'service':this.state.Service,
+              'user':utilisateur,
+              'password':password
           };
           axios.post('http://localhost:8000/ticket/create/', newTickets)
           .then(res => {
