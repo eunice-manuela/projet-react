@@ -46,7 +46,7 @@ export class Accueil extends Component {
               username : this.state.username,
               password: this.state.password,
           };
-          axios.post('http://localhost:8000/ticket/login', AuthInfos)
+          axios.post('http://localhost:8000/ticket/login/', AuthInfos)
           .then(res => {
             console.log(res);
             console.log(res.data);
@@ -60,7 +60,7 @@ export class Accueil extends Component {
             username : this.state.username,
             password: this.state.password,
         };
-        axios.post('http://localhost:8000/ticket/login', AuthInfos)
+        axios.post('http://localhost:8000/ticket/login/', AuthInfos)
         .then(res => {
           console.log(res);
           console.log(res.data);
@@ -74,7 +74,7 @@ export class Accueil extends Component {
             return(
                 <div>
                 <h3 style={{textAlign:'center',color:'black',fontWeight:'bold'}}>Connexion Admin</h3>
-                    <form  onSubmit={this.isLoginClient} className="needs-validation">
+                    <form  onSubmit={this.isLoginAdmin} className="needs-validation">
                         
                             <div className='col-md-12' style={{marginTop:50, marginLeft:'8%'}}>
                                 <input type='text' placeholder ='Nom' className ="form-control" name='Nom'

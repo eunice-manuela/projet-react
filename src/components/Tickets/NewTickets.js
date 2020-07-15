@@ -35,11 +35,11 @@ class NewTickets extends Component {
           let newTickets={
               cas : this.state.Titre,
               contenu: this.state.Content,
-              etat: 'Créé',
+              etat: 'Cree',
               client: 1,
               service: 1,
           };
-          axios.post('http://localhost:8080/tickets', newTickets)
+          axios.post('http://localhost:8000/tickets', newTickets)
           .then(res => {
             console.log(res);
             console.log(res.data);
