@@ -46,7 +46,12 @@ class NewTickets extends Component {
             console.log(res);
             console.log(res.data);
             if(res.data['state']==='success'){
-              alert( "TICKET " +newTickets.cas +" crée avec succèss" )
+              alert( "TICKET " +newTickets.cas +" crée avec succèss" );
+              this.state = {
+                Titre: '',
+                Service: "Aide et support",
+                Content:'',
+              };
             }
             else{
                 alert('echec de lors de la création du ticket')
