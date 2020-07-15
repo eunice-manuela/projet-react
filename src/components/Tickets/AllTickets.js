@@ -19,6 +19,7 @@ class AllTickets extends Component {
             date:'',
             etat:'',
             contenu:'',
+            reponse:'',
         }
     }
 
@@ -39,6 +40,16 @@ class AllTickets extends Component {
           .catch(function (error) {
             console.log(error);
           });
+      }
+      isResolu(id_ticket){
+        this.setState({modalVisible:false})
+        axios.post('http://localhost:8000/ticket/liste/',id_ticket)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       }
 
 
@@ -105,9 +116,11 @@ class AllTickets extends Component {
                 <div>
                     <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
                         <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Reponse</Box>
-                        <Box style={{marginTop:8}} >{this.state.contenu}</Box>
+                        <Box style={{marginTop:8}} >{this.state.reponse}</Box>
                     </Box>
-                    <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
+                    <button  style={{marginLeft:10}} onClick={()=>                          
+                            this.isResolu(this.state.id)      
+                    }
                                 className="btn btn-warning">Ticket resolu</button>
                     <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
                                 className="btn btn-warning">Fermer la fenêtre</button>
@@ -175,7 +188,8 @@ class AllTickets extends Component {
                         auteur:ticket.auteur,
                         date:ticket.date_création,
                         etat:ticket.state,
-                        contenu:ticket.details
+                        contenu:ticket.details,
+                        response:ticket.response
                         })}>
                     <th scope="row">{ticket.id}</th>
                     <td>{ticket.title}</td>
