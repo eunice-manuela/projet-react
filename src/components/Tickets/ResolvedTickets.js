@@ -211,7 +211,7 @@ class ResolvedTickets extends Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Service</th>
-                                    <th scope="col">Auteur</th>
+                                   
                                     <th scope="col">Date</th>
                                     <th scope="col">Etat</th>
                                     </tr>
@@ -224,7 +224,7 @@ class ResolvedTickets extends Component {
                                         <th scope="col">#</th>
                                         <th scope="col">Titre</th>
                                         <th scope="col">Service</th>
-                                        <th scope="col">Auteur</th>
+                                       
                                         <th scope="col">Date</th>
                                         <th scope="col">Etat</th>
                                     </tr>

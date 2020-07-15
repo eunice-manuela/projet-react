@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import '../../styles.css';
+import { utilisateur ,password} from '../Accueil';
 
 class AllTickets extends Component {
 
@@ -25,11 +26,15 @@ class AllTickets extends Component {
     //on recupère les données back end
 
     componentDidMount() {
-        axios.get('http://localhost:8000/ticket/')
+		let data={
+              'user':utilisateur,
+              'password':password
+          };
+        axios.post('http://localhost:8000/ticket/liste/',data)
           .then(res => {
             const tickets = res.data;
             this.setState({tickets: tickets  });
-            console.log('tickets', tickets)
+            console.log(tickets)
           })
           .catch(function (error) {
             console.log(error);
@@ -132,18 +137,18 @@ class AllTickets extends Component {
                         modalVisible:true,
                         id:ticket.id,
                         title:ticket.title,
-                        service:ticket.Service,
-                        auteur:ticket.Auteur,
-                        date:ticket.Date,
-                        etat:ticket.Etat,
-                        contenu:ticket.Content
+                        service:ticket.service,
+                        auteur:ticket.auteur,
+                        date:ticket.date_création,
+                        etat:ticket.state,
+                        contenu:ticket.details
                         })}>
                     <th scope="row">{ticket.id}</th>
                     <td>{ticket.title}</td>
-                    <td>{ticket.Service}</td>
-                    <td>{ticket.Auteur}</td>
-                    <td>{ticket.Date}</td>
-                    <td>{ticket.Etat}</td>
+                    <td>{ticket.service}</td>
+                    
+                    <td>{ticket.date_création}</td>
+                    <td>{ticket.state}</td>
                 </tr>
            
           );
@@ -170,7 +175,7 @@ class AllTickets extends Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Service</th>
-                                    <th scope="col">Auteur</th>
+                                    
                                     <th scope="col">Date</th>
                                     <th scope="col">Etat</th>
                                     </tr>
@@ -194,7 +199,7 @@ class AllTickets extends Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Service</th>
-                                    <th scope="col">Auteur</th>
+                                    
                                     <th scope="col">Date</th>
                                     <th scope="col">Etat</th>
                                     </tr>
@@ -207,7 +212,7 @@ class AllTickets extends Component {
                                         <th scope="col">#</th>
                                         <th scope="col">Titre</th>
                                         <th scope="col">Service</th>
-                                        <th scope="col">Auteur</th>
+                                       
                                         <th scope="col">Date</th>
                                         <th scope="col">Etat</th>
                                     </tr>
