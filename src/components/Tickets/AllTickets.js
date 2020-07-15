@@ -51,6 +51,7 @@ class AllTickets extends Component {
           console.log(error);
         });
         this.setState({modalVisible:false})
+        console.log('id du ticket ',id_ticket)
       }
 
 
