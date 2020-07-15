@@ -31,7 +31,7 @@ export class Accueil extends Component {
     }
 
     onChangeNom = (event) => {
-        this.setState({nom: event.target.value});
+        this.setState({username: event.target.value});
         console.log('Nom ',event.target.value)
       }
       onChangePassword = (event) => {
