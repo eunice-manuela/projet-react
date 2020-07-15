@@ -13,7 +13,7 @@ class Navbar extends Component {
         }
     }
      refreshNavBar=()=> {
-         this.IsLogin
+         
         window.location.reload(false);
       }
     IsLogin=()=>{
