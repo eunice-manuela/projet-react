@@ -9,7 +9,7 @@ import axios from 'axios';
 export var isLogin=true
 export var isLoginAdmin=true
 export var isLoginClient=false
-export var utilisateur
+export var utilisateur='asa'
 
 export class Accueil extends Component {
 
