@@ -65,11 +65,14 @@ class Navbar extends Component {
                 marginRight:0,
                 marginBottom:0,
                 height:52,
-            }} onClick={()=>this.IsLogin}>
+            }}>
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" style={{fontSize:22,
-                            color:'black',fontWeight:'bold'}} href="#">TECH SUPPORT</a>
+                    <button onClick={this.IsLogin} style={{marginLeft:-15,height:50,border:'none'}} >
+                    <a className="navbar-brand" style={{fontSize:22,
+                            color:'black',fontWeight:'bold',marginLeft:10}}>TECH SUPPORT</a>
+                    </button>
+                        
                     </div>
                     <div className="collapse navbar-collapse" 
                         id="bs-example-navbar-collapse-1">
