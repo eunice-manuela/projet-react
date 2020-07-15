@@ -51,7 +51,7 @@ export class Accueil extends Component {
             console.log('res ',res);
             console.log('res ',res.data);
             if(res.data['state']==='success'){
-                isLogin==true
+                isLogin=true
                 if(this.state.username==='admin'){
                     isLoginAdmin=true
                 }
@@ -75,7 +75,7 @@ export class Accueil extends Component {
           console.log(res);
           console.log(res.data);
           if(res.data['state']==='success'){
-                    isLogin==true
+                    isLogin=true
                 if(this.state.username!='admin'){
                     isLoginClient=true
                 }
