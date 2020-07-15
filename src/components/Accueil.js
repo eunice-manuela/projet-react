@@ -6,10 +6,10 @@ import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
         
-export var isLogin=false
-export var isLoginAdmin=false
-export var isLoginClient
-export var utilisateur=[]
+export var isLogin=true
+export var isLoginAdmin=true
+export var isLoginClient=false
+export var utilisateur
 
 export class Accueil extends Component {
 
@@ -69,12 +69,13 @@ export class Accueil extends Component {
             'username' : this.state.username,
             'password': this.state.password,
         };
-
+        
         axios.post('http://localhost:8000/ticket/login/', AuthInfos)
         .then(res => {
           console.log(res);
           console.log(res.data);
           if(res.data['state']==='success'){
+                    utilisateur=this.state.username
                     isLogin=true
                 if(this.state.username!='admin'){
                     isLoginClient=true
@@ -192,7 +193,7 @@ export class Accueil extends Component {
                 <Box p={1} bgcolor="grey.300" style={{width:200,marginRight:50, borderRadius:10}}>
                     <Box style={{textAlign:'center',color:'black',fontWeight:'bold',fontSize:16, 
                         marginTop:20, marginBottom:20}}>NIVEAU DE SERVICE </Box>
-                    <Box style={{textAlign:"center"}}>Descrivez juste votre problème lors de la création du ticket et notre système 
+                    <Box style={{textAlign:"center"}}>Decrivez juste votre problème lors de la création du ticket et notre système 
                         s'occupera du reste, vous laissant sans souci</Box>
 
                     <Box style={{textAlign:'center',color:'black',fontWeight:'bold',fontSize:16, 
