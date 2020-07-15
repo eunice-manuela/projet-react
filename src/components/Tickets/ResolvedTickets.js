@@ -165,7 +165,6 @@ class ResolvedTickets extends Component {
               <th scope="row">{ticket.id}</th>
               <td>{ticket.title}</td>
               <td>{ticket.service}</td>
-              <td>{ticket.auteur}</td>
               <td>{ticket.date_création}</td>
               <td>{ticket.state}</td>
           </tr>
@@ -189,7 +188,6 @@ class ResolvedTickets extends Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Service</th>
-                                    <th scope="col">Auteur</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Etat</th>
                                     </tr>
