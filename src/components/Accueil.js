@@ -21,7 +21,7 @@ export class Accueil extends Component {
             isLoginAdmin:false,
             isLogin:false,
             isAdmin:false,
-            nom:'',
+            username:'',
             password:'',
             nomClient:'cardoun07',
             passwordClient:'cardoun07',

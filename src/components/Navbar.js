@@ -69,7 +69,7 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" style={{fontSize:22,
-                            color:'black',fontWeight:'bold'}} href="/tickets">TECH SUPPORT</a>
+                            color:'black',fontWeight:'bold'}} onClick={()=>this.IsLogin()} /*href="/tickets"*/>TECH SUPPORT</a>
                     </div>
                     <div className="collapse navbar-collapse" 
                         id="bs-example-navbar-collapse-1">
