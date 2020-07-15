@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import '../../styles.css';
-import { utilisateur ,password} from '../Accueil';
+import { utilisateur ,password, isLoginAdmin} from '../Accueil';
 
 class AllTickets extends Component {
 
@@ -82,6 +82,40 @@ class AllTickets extends Component {
         )
     }
 
+    IsAdmin=()=>{
+        if(isLoginAdmin){
+            return(
+                <div>
+                    <form style={{margin:20}}>
+                        <div className='form-group col-md-13 mb-3'>
+                            <label for='content'>Ajouter un commentaire/une réponse</label>
+                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
+                        </div>
+                        <div style={{marginLeft:'30%'}}>
+                            <input type="submit" className="btn btn-primary" value="Envoyer" />
+                            <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
+                                className="btn btn-warning">Fermer la fenêtre</button>
+                        </div>
+                    </form>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div>
+                    <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
+                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Reponse</Box>
+                        <Box style={{marginTop:8}} >{this.state.contenu}</Box>
+                    </Box>
+                    <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
+                                className="btn btn-warning">Ticket resolu</button>
+                    <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
+                                className="btn btn-warning">Fermer la fenêtre</button>
+                </div>
+            )
+        }
+    }
+
     contentModal=()=>{
         return(
             <div>
@@ -111,16 +145,16 @@ class AllTickets extends Component {
                 </div>
                 <div>
                     <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
-                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Message</Box>
+                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>details</Box>
                         <Box style={{marginTop:8}} >{this.state.contenu}</Box>
                     </Box>
                 </div>
-                <div>
-                    <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
-                        <Box bgcolor="grey.300" style={{fontSize:16,fontWeight:"bold",textAlign:"center"}}>Message</Box>
-                        <Box style={{marginTop:8}} >{this.state.contenu}</Box>
-                    </Box>
-                </div>
+                
+
+
+                {this.IsAdmin()}
+
+
             </div>
         )
     }
