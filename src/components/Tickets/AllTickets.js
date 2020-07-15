@@ -25,7 +25,7 @@ class AllTickets extends Component {
     //on recupère les données back end
 
     componentDidMount() {
-        axios.get('./data')
+        axios.get('http://localhost:8000/ticket/')
           .then(res => {
             const tickets = res.data;
             this.setState({tickets: tickets  });
@@ -227,18 +227,7 @@ class AllTickets extends Component {
                 </div>
 
 
-                <Box display="flex" flexDirection="row"
-                    bgcolor="background.paper" justifyContent='flex-start'>
-                    <Box p={1} bgcolor="grey.300">
-                    <div>
-                        <input type='text' placeholder= "Rechercher" className ="form-control" name='Search'/>          
-                    </div>
-                    </Box>
-                    <Box p={1} bgcolor="grey.300">
-                    <input type="submit" className="btn btn-primary" value="Search" />
-                    </Box>
-                    
-                </Box>
+                
 
 
                 

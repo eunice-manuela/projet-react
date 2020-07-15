@@ -6,8 +6,8 @@ import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
         
-export var isLogin=false
-export var isLoginAdmin=false
+export var isLogin=true
+export var isLoginAdmin=true
 export var isLoginClient
 export var utilisateur=[]
 
@@ -57,9 +57,10 @@ export class Accueil extends Component {
     isLoginClient=(event)=>{
         event.preventDefault();
         let AuthInfos={
-            username : this.state.username,
-            password: this.state.password,
+            'username' : this.state.username,
+            'password': this.state.password,
         };
+
         axios.post('http://localhost:8000/ticket/login/', AuthInfos)
         .then(res => {
           console.log(res);
@@ -192,7 +193,7 @@ export class Accueil extends Component {
                         </Box>
                         <Box p={1}>
                         <button style={{marginLeft:30,height:50, width:200, }} onClick={
-                            ()=>this.setState({ isLogin:true,isLoginAdmin:true, isAdmin:true})} 
+                            ()=>this.setState({ modalVisible:true, isAdmin:true})} 
                             className="btn btn-warning">Administrateur</button>
                         </Box>
 

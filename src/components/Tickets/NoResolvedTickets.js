@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import '../../styles.css'
 import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
+import axios from 'axios';
 
 
 
@@ -10,6 +11,7 @@ class NoResolvedTickets extends Component {
         super(props)
         this.state={
             modalVisible:false,
+            tickets:[],
             id:'',
             title:'',
             service:'',
@@ -19,6 +21,18 @@ class NoResolvedTickets extends Component {
             contenu:'',
         }
     }
+
+    componentDidMount() {
+        axios.get('http://localhost:8000/ticket?etat=cree')
+          .then(res => {
+            const tickets = res.data;
+            this.setState({tickets: tickets  });
+            console.log('tickets', tickets)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
 
     ShowModal(){
     
@@ -108,7 +122,7 @@ class NoResolvedTickets extends Component {
 
     render(){
 
-        const MyTickets = [
+        const MyTickets = this.state.tickets/* [
             {id: 1, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
             {id: 2, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'En attente',Content:'Nothing'},
             {id: 3, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
@@ -123,7 +137,7 @@ class NoResolvedTickets extends Component {
             {id: 12, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'En attente',Content:'Nothing'},
             {id: 13, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
             {id: 14, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
-          ];
+          ];*/
 
 
         function TicketsNonResolus(){
@@ -131,11 +145,8 @@ class NoResolvedTickets extends Component {
             const ticketsNonResolus=[]
 
             MyTickets.map((ticket)=>
-                {
-                    if(ticket.Etat==="En attente"){
+               
                     ticketsNonResolus.push(ticket)
-                    }
-                }
             )
             return ticketsNonResolus
         }

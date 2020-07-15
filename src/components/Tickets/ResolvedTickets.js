@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
 import '../../styles.css'
+import axios from 'axios';
 
 class ResolvedTickets extends Component {
 
@@ -9,6 +10,7 @@ class ResolvedTickets extends Component {
         super(props)
         this.state={
             modalVisible:false,
+            tickets:[],
             id:'',
             title:'',
             service:'',
@@ -19,6 +21,17 @@ class ResolvedTickets extends Component {
         }
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:8000/ticket?etat=Resolu')
+          .then(res => {
+            const tickets = res.data;
+            this.setState({tickets: tickets  });
+            console.log('tickets', tickets)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     ShowModal(){
     
         return(
@@ -108,7 +121,7 @@ class ResolvedTickets extends Component {
     
     render(){
 
-        const MyTickets = [
+        const MyTickets = this.state.tickets /*[
             {id: 1, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
             {id: 2, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'En attente',Content:'Nothing'},
             {id: 3, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
@@ -123,16 +136,12 @@ class ResolvedTickets extends Component {
             {id: 12, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'En attente',Content:'Nothing'},
             {id: 13, title: 'Bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
             {id: 14, title: 'bonjour, monde', Service: 'aide et support',Auteur:'cardoun07',Date:'12/05/2020',Etat:'resolu',Content:'Nothing'},
-          ];
+          ];*/
 
         function TicketResolu(){
             const ticketResolu=[]
             MyTickets.map((ticket)=>
-                {
-                    if(ticket.Etat==="resolu"){
                     ticketResolu.push(ticket)
-                    }
-                }
             )
             return ticketResolu
         }
