@@ -9,23 +9,26 @@ import Notifications from './components/Notifications/Notifications'
 import Staff from './components/Staff/Staff'
 import Services from './components/Services/Services'
 import Navbar from './components/Navbar'
-import PrivateRoute from './components/PrivateRoute';
+import ProtectedRoute from'./components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
-import IsUserRoute from './components/IsUserRoute';
+import ClientRoute from './components/ClientRoute';
 
 
 
 
 render(
+  
+  
+
   <div>
     
     <Router>
         <Navbar/>
-        <Route exact path="/" component={Accueil}/>
-        <Route path="/tickets" component={Tickets}/>
-        <Route path="/services" component={Services}/>
-        <Route path="/notifications" component={Notifications}/>
-        <Route path="/staff" component={Staff}/>
+        <PublicRoute exact path="/" component={Accueil}/>
+        <ProtectedRoute path="/tickets" component={Tickets}/>
+        <ProtectedRoute path="/services" component={Services}/>
+        <ProtectedRoute path="/notifications" component={Notifications}/>
+        <ProtectedRoute path="/staff" component={Staff}/>
     </Router>
   </div>,
   document.getElementById('root')

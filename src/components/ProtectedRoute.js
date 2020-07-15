@@ -1,16 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isLogin } from './Accueil';
+import { isLoginAdmin, isLoginClient } from './Accueil';
 
-const PrivateRoute = ({component: Component, ...rest}) => {
+const ProtectedRoute = ({component: Component, ...rest}) => {
     return (
-
         <Route {...rest} render={props => (
-            isLogin ?
+            isLoginAdmin || isLoginClient?
                 <Component {...props} />
             : <Redirect to="/" />
         )} />
     );
 };
 
-export default PrivateRoute;
+export default ProtectedRoute;
