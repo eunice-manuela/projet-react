@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles.css'
 import axios from 'axios';
+import { utilisateur } from '../Accueil';
 
 class NewTickets extends Component {
 
@@ -34,17 +35,21 @@ class NewTickets extends Component {
         event.preventDefault();
           let newTickets={
               cas : this.state.Titre,
-              contenu: this.state.Content,
-              etat: 'Cree',
-              client: 1,
-              service: 1,
+              content: this.state.Content,
+              state: 'Cree',
+              service:this.state.Service,
+              utilisateur:utilisateur,
           };
-          axios.post('http://localhost:8000/tickets', newTickets)
+          axios.post('http://localhost:8000/ticket/create', newTickets)
           .then(res => {
             console.log(res);
             console.log(res.data);
-            alert( "TICKET " +newTickets.cas +" crée avec succèss" )
-            
+            if(res.data['state']==='success'){
+              alert( "TICKET " +newTickets.cas +" crée avec succèss" )
+            }
+            else{
+                alert('echec de lors de la création du ticket')
+            }
           })
           .catch(err => console.log(err));
 
