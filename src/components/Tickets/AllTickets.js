@@ -42,6 +42,8 @@ class AllTickets extends Component {
             console.log(error);
           });
       }
+
+
       isResolu(id_ticket){
        let data={'id':id_ticket}
         axios.post('http://localhost:8000/ticket/validate/',data)
@@ -54,9 +56,13 @@ class AllTickets extends Component {
         this.setState({modalVisible:false})
         console.log('id du ticket ',id_ticket)
       }
+
+
       onChangeContent = (event) => {
         this.setState({addresponse: event.target.value});
       }
+
+
       sendResponse(response,id_ticket){
        let data = {'id':id_ticket,'response':response}
         axios.post('http://localhost:8000/ticket/edit/',data)
@@ -68,10 +74,6 @@ class AllTickets extends Component {
         });
         console.log('reponse ',response)
       }
-
-
-
-
 
 
     ShowModal(){
@@ -117,7 +119,7 @@ class AllTickets extends Component {
                     <form onSubmit={this.sendResponse(this.state.addresponse,this.state.id)} style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" 
+                            <textarea value={this.state.value} placeholder={this.state.reponse} className ="form-control" 
                              onChange={this.onChangeContent} style={{height:100}} required/>
                         </div>
                         <div style={{marginLeft:'30%'}}>
