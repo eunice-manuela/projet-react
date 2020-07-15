@@ -42,6 +42,7 @@ export class Accueil extends Component {
       }
         
     isLoginAdmin=(event)=>{
+        this.setState({modalVisible:false})
         event.preventDefault();
           let AuthInfos={
               'username' : this.state.username,
@@ -65,6 +66,7 @@ export class Accueil extends Component {
           .catch(err => console.log(err));
     }
     isLoginClient=(event)=>{
+        this.setState({modalVisible:false})
         event.preventDefault();
         let AuthInfos={
             'username' : this.state.username,
