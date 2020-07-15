@@ -158,16 +158,16 @@ class ResolvedTickets extends Component {
                   title:ticket.title,
                   service:ticket.service,
                   auteur:ticket.auteur,
-                  date:ticket.date,
-                  etat:ticket.etat,
+                  date:ticket.date_création,
+                  etat:ticket.state,
                   contenu:ticket.details
                   })}>
               <th scope="row">{ticket.id}</th>
               <td>{ticket.title}</td>
               <td>{ticket.service}</td>
               <td>{ticket.auteur}</td>
-              <td>{ticket.date}</td>
-              <td>{ticket.etat}</td>
+              <td>{ticket.date_création}</td>
+              <td>{ticket.state}</td>
           </tr>
           );
 
