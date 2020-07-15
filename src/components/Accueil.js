@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import '../styles.css';
 import image from '../images/friends.png';
 import Box from '@material-ui/core/Box';
+import axios from 'axios';
 
         
 export var isLogin=false
@@ -38,21 +39,34 @@ export class Accueil extends Component {
         this.setState({password: event.target.value});
         console.log('password ',event.target.value)
       }
-
-    isLoginAdmin=()=>{
-        if(this.state.nom===this.state.nomAdmin && this.state.password===this.state.passwordAdmin ){
-            isLoginAdmin=true;
-            isLogin=true;
-            console.log('isLoginAdmin ',isLoginAdmin)
-        }
+        
+    isLoginAdmin=(event)=>{
+        event.preventDefault();
+          let AuthInfos={
+              username : this.state.username,
+              password: this.state.password,
+          };
+          axios.post('http://localhost:8080/tickets', AuthInfos)
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+            
+          })
+          .catch(err => console.log(err));
     }
-    isLoginClient=()=>{
-
-        if(this.state.nom===this.state.nomClient && this.state.password===this.state.passwordClient ){
-           isLoginClient=true;
-           isLogin=true;
-           console.log('isLoginClient ',isLoginClient)
-        }
+    isLoginClient=(event)=>{
+        event.preventDefault();
+        let AuthInfos={
+            username : this.state.username,
+            password: this.state.password,
+        };
+        axios.post('http://localhost:8080/tickets', AuthInfos)
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+          
+        })
+        .catch(err => console.log(err));
     }
 
     contentModal(){
