@@ -48,8 +48,8 @@ export class Accueil extends Component {
           };
           axios.post('http://localhost:8000/ticket/login/', AuthInfos)
           .then(res => {
-            console.log(res);
-            console.log(res.data);
+            console.log('res ',res);
+            console.log('res ',res.data);
             
           })
           .catch(err => console.log(err));
