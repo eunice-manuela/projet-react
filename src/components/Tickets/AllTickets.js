@@ -66,8 +66,7 @@ class AllTickets extends Component {
         .catch(function (error) {
           console.log(error);
         });
-        this.setState({modalVisible:false})
-        console.log('reponse ',data)
+        console.log('reponse ',response)
       }
 
 
@@ -122,8 +121,8 @@ class AllTickets extends Component {
                              onChange={this.onChangeContent} style={{height:100}} required/>
                         </div>
                         <div style={{marginLeft:'30%'}}>
-                            <input type="submit" className="btn btn-primary" value="Envoyer" />
-                            <button  style={{marginLeft:10}} 
+                            <input type="submit" onClick={()=>this.setState({modalVisible:false})} className="btn btn-primary" value="Envoyer" />
+                            <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
                                 className="btn btn-warning">Fermer la fenêtre</button>
                         </div>
                     </form>
