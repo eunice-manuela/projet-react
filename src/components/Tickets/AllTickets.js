@@ -66,7 +66,7 @@ class AllTickets extends Component {
         .catch(function (error) {
           console.log(error);
         });
-        this.setState({modalVisible:false})
+       
         console.log('reponse ',data)
       }
 
