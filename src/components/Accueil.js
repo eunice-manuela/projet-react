@@ -50,6 +50,15 @@ export class Accueil extends Component {
           .then(res => {
             console.log('res ',res);
             console.log('res ',res.data);
+            if(res.data['state']==='success'){
+                isLogin==true
+                if(this.state.username==='admin'){
+                    isLoginAdmin=true
+                }
+            }
+            else{
+                alert('echec de connexion')
+            }
             
           })
           .catch(err => console.log(err));
@@ -65,6 +74,15 @@ export class Accueil extends Component {
         .then(res => {
           console.log(res);
           console.log(res.data);
+          if(res.data['state']==='success'){
+                    isLogin==true
+                if(this.state.username!='admin'){
+                    isLoginClient=true
+                }
+            }
+            else{
+                alert('echec de connexion')
+            }
           
         })
         .catch(err => console.log(err));
