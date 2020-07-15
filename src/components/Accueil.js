@@ -6,8 +6,8 @@ import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
         
-export var isLogin=true
-export var isLoginAdmin=true
+export var isLogin=false
+export var isLoginAdmin=false
 export var isLoginClient
 export var utilisateur=[]
 
@@ -43,8 +43,8 @@ export class Accueil extends Component {
     isLoginAdmin=(event)=>{
         event.preventDefault();
           let AuthInfos={
-              username : this.state.username,
-              password: this.state.password,
+              'username' : this.state.username,
+              'password': this.state.password,
           };
           axios.post('http://localhost:8000/ticket/login/', AuthInfos)
           .then(res => {
