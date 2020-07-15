@@ -42,7 +42,7 @@ class AllTickets extends Component {
           });
       }
       isResolu(id_ticket){
-        this.setState({modalVisible:false})
+       
         axios.post('http://localhost:8000/ticket/validate/',id_ticket)
         .then(res => {
           console.log(res.data)
@@ -50,6 +50,7 @@ class AllTickets extends Component {
         .catch(function (error) {
           console.log(error);
         });
+        this.setState({modalVisible:false})
       }
 
 
@@ -189,7 +190,7 @@ class AllTickets extends Component {
                         date:ticket.date_création,
                         etat:ticket.state,
                         contenu:ticket.details,
-                        response:ticket.response
+                        reponse:ticket.response,
                         })}>
                     <th scope="row">{ticket.id}</th>
                     <td>{ticket.title}</td>
