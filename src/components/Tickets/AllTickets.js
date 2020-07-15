@@ -20,6 +20,7 @@ class AllTickets extends Component {
             etat:'',
             contenu:'',
             reponse:'',
+            addresponse:'',
         }
     }
 
@@ -42,8 +43,8 @@ class AllTickets extends Component {
           });
       }
       isResolu(id_ticket){
-       
-        axios.post('http://localhost:8000/ticket/validate/',id_ticket)
+       let data={'id':id_ticket}
+        axios.post('http://localhost:8000/ticket/validate/',data)
         .then(res => {
           console.log(res.data)
         })
@@ -52,6 +53,21 @@ class AllTickets extends Component {
         });
         this.setState({modalVisible:false})
         console.log('id du ticket ',id_ticket)
+      }
+      onChangeContent = (event) => {
+        this.setState({addresponse: event.target.value});
+      }
+      sendResponse(response,id_ticket){
+       let data = {'id':id_ticket,'response':response}
+        axios.post('http://localhost:8000/ticket/edit/',data)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        this.setState({modalVisible:false})
+        console.log('reponse ',data)
       }
 
 
@@ -99,10 +115,11 @@ class AllTickets extends Component {
         if(isLoginAdmin){
             return(
                 <div>
-                    <form style={{margin:20}}>
+                    <form onSubmit={this.sendResponse(this.state.addresponse,this.state.id)} style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
+                            <textarea value={this.state.value} className ="form-control" 
+                             onChange={this.onChangeContent} style={{height:100}} required/>
                         </div>
                         <div style={{marginLeft:'30%'}}>
                             <input type="submit" className="btn btn-primary" value="Envoyer" />
