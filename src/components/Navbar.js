@@ -57,9 +57,6 @@ class Navbar extends Component {
                         <li className="li_nav" activeClassName="main-nav">
                             <NavLink to="/Services">Services</NavLink>
                         </li>
-                        <li className="li_nav" activeClassName="main-nav">
-                            <NavLink to="/Notifications">Notifications</NavLink>
-                        </li>
                         <button onClick={this.deconnexion} style={{border:'none'}} >
                              <a className="navbar-brand" style={{fontSize:12,
                                 color:'black',fontWeight:'bold',marginLeft:10}}>Deconnexion</a>
@@ -72,9 +69,6 @@ class Navbar extends Component {
                     <>
                         <li className="li_nav" activeClassName="main-nav">
                             <NavLink to="/Tickets">Tickets</NavLink>
-                        </li>
-                        <li className="li_nav" activeClassName="main-nav">
-                            <NavLink to="/Notifications">Notifications</NavLink>
                         </li>
                         <button onClick={this.deconnexion} style={{border:'none'}} >
                              <a className="navbar-brand" style={{fontSize:12,

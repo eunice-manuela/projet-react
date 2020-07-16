@@ -7,28 +7,28 @@ class NewServices extends Component {
         super(props);
         this.state = {
           Nom: '',
-          Description:'',
+          Adresse:'',
         };
       }
       onChangeNom = (event) => {
         this.setState({Nom: event.target.value});
       }
-      onChangeDescription = (event) => {
-        this.setState({Description: event.target.value});
+      onChangeAdresse = (event) => {
+        this.setState({Adresse: event.target.value});
       }
       onCancel=()=>{
         this.setState({
           Nom:'',
-          Description:'',
+          Adresse:'',
         })
       }
 
       onSendService=()=>{
           let newServices={
               Nom : this.state.Nom,
-              Description: this.state.Description,
+              Adresse: this.state.Adresse,
           }
-          alert('Nom '+ newServices.Nom +' Description '+newServices.Description)
+          alert('Nom '+ newServices.Nom +' Adresse '+newServices.Adresse)
           axios.post('', { newServices })
             .then(res => {
               console.log(res);
@@ -54,9 +54,9 @@ class NewServices extends Component {
               </div>
             </div>
             <div className='form-group col-md-12 mb-3' style={{marginTop:20}}>
-              <label for='Description'>Description</label>
+              <label for='Adresse'>Adresse</label>
               <textarea value={this.state.value} className ="form-control" style={{height:150}}
-                        onChange={this.onChangeDescription} required/>
+                        onChange={this.onChangeAdresse} required/>
             </div>
             <div style={{marginLeft:'40%'}}>
             <input type="submit" className="btn btn-primary" value="Créer" />

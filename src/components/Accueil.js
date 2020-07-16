@@ -51,6 +51,7 @@ export class Accueil extends Component {
     isLoginAdmin=(event)=>{
         this.setState({modalVisible:false})
         event.preventDefault();
+       
           let AuthInfos={
               'username' : this.state.username,
               'password': this.state.password,
@@ -61,6 +62,7 @@ export class Accueil extends Component {
             console.log('res ',res.data);
             if(res.data['state']==='success'){
                 isLogin=true
+                console.log(isLogin)
                 if(this.state.username==='admin'){
                     isLoginAdmin=true
                 }
