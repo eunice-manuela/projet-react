@@ -17,8 +17,13 @@ class ResolveTickets extends Component {
             date:'',
             etat:'',
             contenu:'',
+            addresponse:'',
         }
     }
+
+    onChangeContent = (event) => {
+        this.setState({addresponse: event.target.value});
+      }
 
     componentDidMount() {
         axios.get('http://localhost:8000/ticket/unsolved')
@@ -31,6 +36,18 @@ class ResolveTickets extends Component {
             console.log(error);
           });
       }
+
+      sendResponse(response,id_ticket){
+        let data = {'id':id_ticket,'response':response}
+         axios.post('http://localhost:8000/ticket/edit/',data)
+         .then(res => {
+           console.log(res.data)
+         })
+         .catch(function (error) {
+           console.log(error);
+         });
+         console.log('reponse ',response)
+       }
 
     ShowModal(){
     
@@ -102,13 +119,14 @@ class ResolveTickets extends Component {
                     </Box>
                 </div>
                 <div>
-                    <form style={{margin:20}}>
+                    <form onSubmit={this.sendResponse(this.state.addresponse,this.state.id)} style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
+                            <textarea value={this.state.value} placeholder={this.state.reponse} className ="form-control" 
+                             onChange={this.onChangeContent} style={{height:100}} required/>
                         </div>
                         <div style={{marginLeft:'30%'}}>
-                            <input type="submit" className="btn btn-primary" value="Envoyer" />
+                            <input type="submit" onClick={()=>this.setState({modalVisible:false})} className="btn btn-primary" value="Envoyer" />
                             <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
                                 className="btn btn-warning">Fermer la fenêtre</button>
                         </div>
@@ -143,8 +161,13 @@ class ResolveTickets extends Component {
             const ticketsNonResolus=[]
 
             MyTickets.map((ticket)=>
-               
+            {
+                if(ticket.state!='resolu'){
                     ticketsNonResolus.push(ticket)
+                   }
+            }
+               
+                  
             )
             return ticketsNonResolus
         }
@@ -156,18 +179,18 @@ class ResolveTickets extends Component {
                 modalVisible:true,
                 id:ticket.id,
                 title:ticket.title,
-                service:ticket.Service,
-                auteur:ticket.Auteur,
-                date:ticket.Date,
-                etat:ticket.Etat,
-                contenu:ticket.Content
+                service:ticket.service,
+                auteur:ticket.auteur,
+                date:ticket.date_création,
+                etat:ticket.state,
+                contenu:ticket.details
                 })}>
               <th scope="row">{ticket.id}</th>
               <td>{ticket.title}</td>
-              <td>{ticket.Service}</td>
-              <td>{ticket.Auteur}</td>
-              <td>{ticket.Date}</td>
-              <td>{ticket.Etat}</td>
+              <td>{ticket.service}</td>
+              <td>{ticket.auteur}</td>
+              <td>{ticket.date_création}</td>
+              <td>{ticket.state}</td>
           </tr>
           );
 
