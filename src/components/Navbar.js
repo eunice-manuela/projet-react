@@ -78,6 +78,13 @@ class Navbar extends Component {
                 )
             }
         }
+        else{
+            return(
+                <li className="li_nav" activeClassName="main-nav">
+                    <NavLink exact to="/">Accueil</NavLink>
+                </li>
+            )
+        }
     }
     render(){
         return (
@@ -100,9 +107,7 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" 
                         id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav navbar-right ul"  >
-                            <li className="li_nav" activeClassName="main-nav">
-                                <NavLink exact to="/">Accueil</NavLink>
-                            </li>
+                            
                             
                             {this.IsLogin()}
 
