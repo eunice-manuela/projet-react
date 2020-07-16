@@ -23,7 +23,8 @@ class NewServices extends Component {
         })
       }
 
-      onSendService=()=>{
+      onSendService=(event)=>{
+        event.preventDefault()
           let newServices={
               Nom : this.state.Nom,
               Adresse: this.state.Adresse,
