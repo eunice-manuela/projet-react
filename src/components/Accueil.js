@@ -94,6 +94,7 @@ export class Accueil extends Component {
                 if(this.state.username!='admin'){
                     isLoginClient=true
                 }
+                this.setState({redirect:true})
             }
             else{
                 alert('echec de connexion')
