@@ -1,11 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { isLogin } from './Accueil';
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
+
+    const [Login, setIsLogin] = useState(isLogin);
+   
     return (
         <Route {...rest} render={props => (
-            isLogin?
+            Login?
                 <Redirect to="/tickets" />
             : <Component {...props} />
         )} />

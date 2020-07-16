@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles.css'
+import axios from 'axios';
 
 class GestionAdmin extends Component {
 
@@ -7,22 +8,28 @@ class GestionAdmin extends Component {
         super(props)
         this.state={
             modalVisible:false,
+            admins:[],
             id:'',
             Nom:'',
-            Services:'',
+            first_name:'',
+            email:'',
         }
     }
+    componentDidMount() {
+
+        axios.get('http://localhost:8000/ticket/listeAdmin/')
+          .then(res => {
+            const admins = res.data;
+            this.setState({admins: admins  });
+            console.log(admins)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
 
     render(){
-        const Admins = [
-            {id: 1, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 2, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 3, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 4, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 5, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 6, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-            {id: 7, Nom: 'Mathieu Canthon Pirouette',Services:'aide support'},
-          ];
+        const Admins = this.state.admins
 
           const content = Admins.map((admin) =>
             
@@ -30,12 +37,14 @@ class GestionAdmin extends Component {
                     ()=>this.setState({
                         modalVisible:true,
                         id:Admins.id,
-                        Nom:Admins.Nom,
-                        Services:Admins.Services
+                        Nom:Admins.last_name,
+                        first_name:Admins.first_name,
+                        email:Admins.email,
                         })}>
                     <th scope="row">{admin.id}</th>
-                    <td>{admin.Nom}</td>
-                    <td>{admin.Services}</td>
+                    <td>{admin.last_name}</td>
+                    <td>{admin.first_name}</td>
+                    <td>{admin.email}</td>
                 </tr>
            
           );
@@ -54,7 +63,8 @@ class GestionAdmin extends Component {
                                     <tr >
                                     <th scope="col">#</th>
                                     <th scope="col">Nom</th>
-                                    <th scope="col">Service</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,7 +85,8 @@ class GestionAdmin extends Component {
                                     <tr >
                                     <th scope="col">#</th>
                                     <th scope="col">Nom</th>
-                                    <th scope="col">Service</th>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,7 +96,8 @@ class GestionAdmin extends Component {
                                     <tr >
                                         <th scope="col">#</th>
                                         <th scope="col">Nom</th>
-                                        <th scope="col">Service</th>
+                                        <th scope="col">Prenom</th>
+                                        <th scope="col">Email</th>
                                     </tr>
                                 </tfoot>
                             </table>
