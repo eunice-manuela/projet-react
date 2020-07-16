@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles.css';
+import axios from 'axios';
 import { isLoginAdmin,isLogin,isLoginClient } from './Accueil';
 
 class Navbar extends Component {
@@ -32,8 +33,20 @@ class Navbar extends Component {
             isLoginAdmin:false,
             isLoginClient:false,
         })
+
+
+        axios.get('http://localhost:8000/ticket/logout/')
+        .then(res => {
+         alert(res.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
         window.location.reload(false);
     }
+       
+    
 
      refreshNavBar=()=> {
          this.setState({
