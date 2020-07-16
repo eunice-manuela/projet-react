@@ -112,8 +112,8 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-header">
                     <button onClick={this.refreshNavBar} style={{marginLeft:-15,height:50,border:'none'}} >
-                    <a className="navbar-brand" style={{fontSize:22,
-                            color:'black',fontWeight:'bold',marginLeft:10}}>TECH SUPPORT</a>
+                    <NavLink to="/Tickets" className="navbar-brand" style={{fontSize:22,
+                            color:'black',fontWeight:'bold',marginLeft:10}}>TECH SUPPORT</NavLink>
                     </button>
                         
                     </div>
