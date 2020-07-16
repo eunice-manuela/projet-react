@@ -37,7 +37,7 @@ class ResolveTickets extends Component {
           });
       }
 
-      sendResponse(response,id_ticket){
+      sendResponse(e,response,id_ticket){
         let data = {'id':id_ticket,'response':response}
          axios.post('http://localhost:8000/ticket/edit/',data)
          .then(res => {
