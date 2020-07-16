@@ -78,7 +78,7 @@ class NewTickets extends Component {
           </div>
 
 
-          <form onSubmit={this.onSendTicket} className="needs-validation">
+          <form onSubmit={(event)=>{event.preventDefault(); this.onSendTicket()}} className="needs-validation">
             <div className="form-row">
               <div className='col-md-6'>
                 <label for='titre'></label>

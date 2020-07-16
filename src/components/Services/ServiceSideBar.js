@@ -27,16 +27,6 @@ class ServiceSideBar extends Component {
                         marginBottom:5,
                         marginTop:5,
                         }}></div>
-                        <span activeClassName="main-nav">
-                        <NavLink to="/Nouveaux services" >Nouveaux services</NavLink>
-                        </span>
-                    <div style={{
-                        height:1,
-                        backgroundColor:'white',
-                        marginBottom:5,
-                        marginTop:5,
-                        }}></div>
-                    
                 </div>
                 <Route>
                     <Route exact path="/" component={AllServices}/>

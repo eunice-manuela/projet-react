@@ -116,7 +116,7 @@ class AllTickets extends Component {
         if(isLoginAdmin){
             return(
                 <div>
-                    <form onSubmit={this.sendResponse(this.state.addresponse,this.state.id)} style={{margin:20}}>
+                    <form onSubmit={(event)=>{event.preventDefault(); this.sendResponse(this.state.addresponse,this.state.id)}} style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
                             <textarea value={this.state.value} placeholder={this.state.reponse} className ="form-control" 
