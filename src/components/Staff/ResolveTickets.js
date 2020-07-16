@@ -36,9 +36,7 @@ class ResolveTickets extends Component {
             console.log(error);
           });
       }
-
-      sendResponse(event,response,id_ticket){
-          event.preventDefault()
+      sendResponse(response,id_ticket){
         let data = {'id':id_ticket,'response':response}
          axios.post('http://localhost:8000/ticket/edit/',data)
          .then(res => {
@@ -120,7 +118,7 @@ class ResolveTickets extends Component {
                     </Box>
                 </div>
                 <div>
-                    <form onSubmit={this.sendResponse(this.state.addresponse,this.state.id)} style={{margin:20}}>
+                    <form onSubmit={(event)=>{event.preventDefault(); this.sendResponse(this.state.addresponse,this.state.id)}} style={{margin:20}}>
                         <div className='form-group col-md-13 mb-3'>
                             <label for='content'>Ajouter un commentaire/une réponse</label>
                             <textarea value={this.state.value} placeholder={this.state.reponse} className ="form-control" 
