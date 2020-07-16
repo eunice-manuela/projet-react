@@ -228,11 +228,7 @@ export class Accueil extends Component {
                         </Box>
 
 
-                        <Box p={1}>
-                        <button style={{marginLeft:30,height:50, width:200, }} onClick={
-                            ()=>this.isLoginTest()} 
-                            className="btn btn-warning">test login Admin</button>
-                        </Box>
+                       
 
 
 
