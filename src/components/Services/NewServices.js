@@ -29,11 +29,13 @@ class NewServices extends Component {
               Adresse: this.state.Adresse,
           }
           alert('Nom '+ newServices.Nom +' Adresse '+newServices.Adresse)
-          axios.post('', { newServices })
+          axios.post('http://localhost:8000/ticket/createService/', newServices)
             .then(res => {
-              console.log(res);
+             
               console.log(res.data);
+              alert(res.data)
             })
+            
       }
       render() {
         return (
