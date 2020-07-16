@@ -6,8 +6,8 @@ import Box from '@material-ui/core/Box';
 import axios from 'axios';
 
         
-export var isLogin=true
-export var isLoginAdmin=true
+export var isLogin=false
+export var isLoginAdmin=false
 export var isLoginClient=false
 export var utilisateur='asa'
 export var password='10022000a'
@@ -29,6 +29,13 @@ export class Accueil extends Component {
             nomAdmin:'steven07',
             passwordAdmin:'steven07',
         }
+    }
+
+    isLoginTest=()=>{
+        console.log('isLoginAdmin ',isLoginAdmin , ' isLogin ', isLogin)
+        isLogin=true
+        isLoginClient=true
+        console.log('isLoginAdmin ',isLoginAdmin , ' isLogin ', isLogin)
     }
 
     onChangeNom = (event) => {
@@ -219,6 +226,15 @@ export class Accueil extends Component {
                             ()=>this.setState({ modalVisible:true, isAdmin:true})} 
                             className="btn btn-warning">Administrateur</button>
                         </Box>
+
+
+                        <Box p={1}>
+                        <button style={{marginLeft:30,height:50, width:200, }} onClick={
+                            ()=>this.isLoginTest()} 
+                            className="btn btn-warning">test login Admin</button>
+                        </Box>
+
+
 
                     </Box>
                     <div style={{height:200, marginLeft:100}}>

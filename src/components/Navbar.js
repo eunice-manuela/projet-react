@@ -10,15 +10,42 @@ class Navbar extends Component {
         super()
         this.state={
             isLogin:false,
+            isLoginAdmin:false,
+            isLoginClient:false,
         }
     }
-     refreshPage=()=> {
+
+    UNSAFE_componentWillReceiveProps() {
+    
+        if (isLogin!=this.state.isLogin || isLoginAdmin!=this.state.isLoginAdmin 
+            || isLoginClient!=this.state.isLoginClient) {
+          this.setState({
+            isLogin:isLogin,
+            isLoginAdmin:isLoginAdmin,
+            isLoginClient:isLoginClient,
+          });
+        }
+      }
+    deconnexion=()=>{
+        this.setState({
+            isLogin:false,
+            isLoginAdmin:false,
+            isLoginClient:false,
+        })
         window.location.reload(false);
+    }
+
+     refreshNavBar=()=> {
+         this.setState({
+            isLogin:isLogin,
+            isLoginAdmin:isLoginAdmin,
+            isLoginClient:isLoginClient,
+          });
       }
     IsLogin=()=>{
-        if(isLogin){
+        if(this.state.isLogin){
 
-            if(isLoginAdmin){
+            if(this.state.isLoginAdmin){
                 return(
                     <>
                         <li className="li_nav" activeClassName="main-nav">
@@ -33,13 +60,14 @@ class Navbar extends Component {
                         <li className="li_nav" activeClassName="main-nav">
                             <NavLink to="/Notifications">Notifications</NavLink>
                         </li>
-                        <li className="li_nav" activeClassName="main-nav">
-                            <NavLink to="/Notifications">Deconnexion</NavLink>
-                        </li>
+                        <button onClick={this.deconnexion} style={{border:'none'}} >
+                             <a className="navbar-brand" style={{fontSize:12,
+                                color:'black',fontWeight:'bold',marginLeft:10}}>Deconnexion</a>
+                        </button>
                     </>
                 )
             }
-            if(isLoginClient){
+            if(this.state.isLoginClient){
                 return(
                     <>
                         <li className="li_nav" activeClassName="main-nav">
@@ -48,9 +76,10 @@ class Navbar extends Component {
                         <li className="li_nav" activeClassName="main-nav">
                             <NavLink to="/Notifications">Notifications</NavLink>
                         </li>
-                        <li className="li_nav" activeClassName="main-nav">
-                            <NavLink to="/Notifications">Deconnexion</NavLink>
-                        </li>
+                        <button onClick={this.deconnexion} style={{border:'none'}} >
+                             <a className="navbar-brand" style={{fontSize:12,
+                                color:'black',fontWeight:'bold',marginLeft:10}}>Deconnexion</a>
+                        </button>
                     </>
                 )
             }
@@ -68,7 +97,7 @@ class Navbar extends Component {
             }}>
                 <div className="container-fluid">
                     <div className="navbar-header">
-                    <button onClick={this.IsLogin} style={{marginLeft:-15,height:50,border:'none'}} >
+                    <button onClick={this.refreshNavBar} style={{marginLeft:-15,height:50,border:'none'}} >
                     <a className="navbar-brand" style={{fontSize:22,
                             color:'black',fontWeight:'bold',marginLeft:10}}>TECH SUPPORT</a>
                     </button>
