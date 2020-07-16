@@ -28,7 +28,6 @@ class NewServices extends Component {
               Nom : this.state.Nom,
               Adresse: this.state.Adresse,
           }
-          alert('Nom '+ newServices.Nom +' Adresse '+newServices.Adresse)
           axios.post('http://localhost:8000/ticket/createService/', newServices)
             .then(res => {
              

@@ -21,7 +21,7 @@ class ResolveTickets extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/ticket?etat=cree')
+        axios.get('http://localhost:8000/ticket/unsolved')
           .then(res => {
             const tickets = res.data;
             this.setState({tickets: tickets  });
@@ -245,8 +245,8 @@ class ResolveTickets extends Component {
         return (
             <div className="main">
                 <div style={{textAlign:'center',marginBottom:20}}>
-                    <h3>Mes tickets non resolus</h3>
-                    <p>Ici vous pouvez voir tout vos tickets non resolu</p>
+                    <h3>tickets non resolus</h3>
+                    <p>Ici vous pouvez voir la liste de tous les tickets non resolu</p>
                 </div>
                 {showTable()}
                 {this.ShowModal()}
