@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import Box from '@material-ui/core/Box';
 import '../../styles.css'
 import axios from 'axios';
-import { utilisateur ,password} from '../Accueil';
+import { utilisateur ,password,isLoginAdmin,isLoginClient} from '../Accueil';
 
 class ResolvedTickets extends Component {
 
@@ -19,6 +19,8 @@ class ResolvedTickets extends Component {
             date:'',
             etat:'',
             contenu:'',
+            response:'',
+           
         }
     }
 
@@ -108,18 +110,16 @@ class ResolvedTickets extends Component {
                     </Box>
                 </div>
                 <div>
-                    <form style={{margin:20}}>
-                        <div className='form-group col-md-13 mb-3'>
-                            <label for='content'>Ajouter un commentaire/une réponse</label>
-                            <textarea value={this.state.value} className ="form-control" style={{height:100}} required/>
-                        </div>
-                        <div style={{marginLeft:'30%'}}>
-                            <input type="submit" className="btn btn-primary" value="Envoyer" />
+                    <Box display="flex" flexDirection='column'  bgcolor="background.paper" p={1} m={1}>
+                        <Box bgcolor="grey.300" style={{fontSize:18,fontWeight:"bold",textAlign:"center"}}>Response</Box>
+                        <Box style={{marginTop:10}} >{this.state.response}</Box>
+                    </Box>
+                </div>
+                <div style={{marginLeft:'30%'}}>
                             <button  style={{marginLeft:10}} onClick={()=>this.setState({modalVisible:false})}
                                 className="btn btn-warning">Fermer la fenêtre</button>
                         </div>
-                    </form>
-                </div>
+               
             </div>
         )
     }
@@ -160,7 +160,8 @@ class ResolvedTickets extends Component {
                   auteur:ticket.auteur,
                   date:ticket.date_création,
                   etat:ticket.state,
-                  contenu:ticket.details
+                  contenu:ticket.details,
+                  response:ticket.response,
                   })}>
               <th scope="row">{ticket.id}</th>
               <td>{ticket.title}</td>
