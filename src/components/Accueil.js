@@ -4,7 +4,7 @@ import '../styles.css';
 import image from '../images/friends.png';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
-
+import {Redirect} from "react-router-dom";
         
 export var isLogin=false
 export var isLoginAdmin=false
@@ -66,6 +66,7 @@ export class Accueil extends Component {
                 if(this.state.username==='admin'){
                     isLoginAdmin=true
                 }
+                this.state.redirect=true
             }
             else{
                 alert('echec de connexion')
@@ -196,8 +197,9 @@ export class Accueil extends Component {
 
 
     render(){
-
-
+        if(this.state.redirect===true){
+            return <Redirect to="Tickets/"/>
+        }
         return(
 
           <div style={{backgroundColor:'black'}}>
