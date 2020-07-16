@@ -28,11 +28,12 @@ class NewServices extends Component {
               Nom : this.state.Nom,
               Adresse: this.state.Adresse,
           }
+         
           axios.post('http://localhost:8000/ticket/createService/', newServices)
             .then(res => {
              
               console.log(res.data);
-              alert(res.data)
+              alert('service crée avec succès')
             })
             
       }

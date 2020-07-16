@@ -17,7 +17,7 @@ class AllServices extends Component {
     }
 
     componentDidMount() {
-        axios.get('./data')
+        axios.get('http://localhost:8000/ticket/listeService/')
           .then(res => {
             const services = res.data;
             this.setState({services: services  });
