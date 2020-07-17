@@ -31,13 +31,6 @@ export class Accueil extends Component {
         }
     }
 
-    isLoginTest=()=>{
-        console.log('isLoginAdmin ',isLoginAdmin , ' isLogin ', isLogin)
-        isLogin=true
-        isLoginClient=true
-        console.log('isLoginAdmin ',isLoginAdmin , ' isLogin ', isLogin)
-    }
-
     onChangeNom = (event) => {
         this.setState({username: event.target.value});
         console.log('Nom ',event.target.value)
@@ -62,10 +55,7 @@ export class Accueil extends Component {
             console.log('res ',res.data);
             if(res.data['state']==='success'){
                 isLogin=true
-                console.log(isLogin)
-                if(this.state.username==='admin'){
-                    isLoginAdmin=true
-                }
+                isLoginAdmin=true
                 this.setState({redirect:true})
             }
             else{
@@ -83,7 +73,7 @@ export class Accueil extends Component {
             'password': this.state.password,
         };
         
-        axios.post('http://localhost:8000/ticket/login/', AuthInfos)
+        axios.post('http://localhost:8000/ticket/loginClient/', AuthInfos)
         .then(res => {
           console.log(res);
           console.log(res.data);
@@ -91,9 +81,7 @@ export class Accueil extends Component {
                     utilisateur=this.state.username
                     password=this.state.password
                     isLogin=true
-                if(this.state.username!='admin'){
                     isLoginClient=true
-                }
                 this.setState({redirect:true})
             }
             else{
