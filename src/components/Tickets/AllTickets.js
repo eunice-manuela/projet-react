@@ -19,7 +19,7 @@ class AllTickets extends Component {
             date:'',
             etat:'',
             contenu:'',
-            reponse:'',
+            reponse:'Aucune reponse pour le moment',
             addresponse:'',
         }
     }
