@@ -16,14 +16,14 @@ class Navbar extends Component {
         }
     }
 
-    UNSAFE_componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps(nextProps) {
     
-        if (isLogin!=this.state.isLogin || isLoginAdmin!=this.state.isLoginAdmin 
-            || isLoginClient!=this.state.isLoginClient) {
+        if (nextProps.isLogin!=this.state.isLogin || nextProps.isLoginAdmin!=this.state.isLoginAdmin 
+            || nextProps.isLoginClient!=this.state.isLoginClient) {
           this.setState({
-            isLogin:isLogin,
-            isLoginAdmin:isLoginAdmin,
-            isLoginClient:isLoginClient,
+            isLogin:nextProps.isLogin,
+            isLoginAdmin:nextProps.isLoginAdmin,
+            isLoginClient:nextProps.isLoginClient,
           });
         }
       }
